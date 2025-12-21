@@ -1,0 +1,107 @@
+{
+    "info": {
+        "name": "Assignment Service",
+        "description": "Assignment Service APIs for IT Asset Management",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ],
+    "item": [
+        {
+            "name": "Init Assignment DB",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{baseUrl}}/assignments/init-db",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "assignments",
+                        "init-db"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Assign Asset",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"assetId\": \"<ASSET_ID_FROM_ASSET_SERVICE>\",\n  \"employeeCode\": \"EMP001\"\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/assignments",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "assignments"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Assignments by Employee",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{baseUrl}}/assignments/employee/EMP001",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "assignments",
+                        "employee",
+                        "EMP001"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Assignments by Asset",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{baseUrl}}/assignments/asset/<ASSET_ID>",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "assignments",
+                        "asset",
+                        "<ASSET_ID>"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Return Asset",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{baseUrl}}/assignments/<ASSIGNMENT_ID>/return",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "assignments",
+                        "<ASSIGNMENT_ID>",
+                        "return"
+                    ]
+                }
+            }
+        }
+    ]
+}
