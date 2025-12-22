@@ -12,11 +12,11 @@ async function validateAsset(assetId) {
 }
 
 async function markAssetAssigned(assetId) {
-    await axios.put(`${BASE_URL}/assets/${assetId}/assign`);
+    await axios.put(`${BASE_URL}/assets/${assetId}/status`, { status: 'ASSIGNED' });
 }
 
 async function markAssetReturned(assetId) {
-    await axios.put(`${BASE_URL}/assets/${assetId}/return`);
+    await axios.put(`${BASE_URL}/assets/${assetId}/status`, { status: 'AVAILABLE' });
 }
 
 module.exports = {

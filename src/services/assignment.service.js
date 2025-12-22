@@ -37,9 +37,15 @@ async function returnAsset(id) {
     );
 }
 
+async function findAll() {
+    const res = await pool.query('SELECT * FROM asset_assignments');
+    return res.rows;
+}
+
 module.exports = {
     createAssignment,
     findByEmployee,
     findByAsset,
-    returnAsset
+    returnAsset,
+    findAll
 };

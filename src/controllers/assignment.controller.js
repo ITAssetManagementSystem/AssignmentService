@@ -24,9 +24,16 @@ async function assignAsset(req, res) {
     await employeeService.validateEmployee(employeeCode);
 
     const id = await assignmentService.createAssignment(assetId, employeeCode);
-    await assetService.markAssetAssigned(assetId);
 
-    res.json({ assignmentId: id });
+    try {
+        await assetService.markAssetAssigned(assetId);
+    } catch (err) {
+        // Log and return success for the assignment creation — asset status can be fixed later
+        console.error('Failed to mark asset assigned:', err && err.message ? err.message : err);
+        return res.status(201).json({ assignmentId: id, warning: 'Failed to mark asset assigned' });
+    }
+
+    res.status(201).json({ assignmentId: id });
 }
 
 async function getByEmployee(req, res) {
@@ -44,10 +51,16 @@ async function returnAsset(req, res) {
     res.send('Asset returned');
 }
 
+async function getAll(req, res) {
+    const rows = await assignmentService.findAll();
+    res.json(rows);
+}
+
 module.exports = {
     initDb,
     assignAsset,
     getByEmployee,
     getByAsset,
-    returnAsset
+    returnAsset,
+    getAll
 };
