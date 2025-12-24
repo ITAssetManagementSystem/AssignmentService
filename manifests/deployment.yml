@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assignment-service
+  namespace: it-assignment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assignment-service
+  template:
+    metadata:
+      labels:
+        app: assignment-service
+    spec:
+      containers:
+        - name: assignment-service
+          image: devacr231225.azurecr.io/assignment-service:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASSIGNMENT_DB_URL
+              value: "postgres://pgadmin:Strong@123@dev-postgres2312256060.postgres.database.azure.com:5432/assignmentdb?sslmode=require"
+            - name: ASSET_SERVICE_BASE_URL
+              value: http://asset-service.it-asset.svc.cluster.local
+            - name: EMPLOYEE_SERVICE_BASE_URL
+              value: http://employee-service.it-employee.svc.cluster.local
