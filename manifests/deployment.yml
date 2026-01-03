@@ -22,6 +22,6 @@ spec:
             - name: ASSIGNMENT_DB_URL
               value: "postgres://pgadmin:Strong@123@dev-postgres301225.postgres.database.azure.com:5432/assignmentdb?sslmode=require"
             - name: ASSET_SERVICE_BASE_URL
-              value: http://asset-service.it-asset.svc.cluster.local
+              value: https://asset-service.it-asset.svc.cluster.local
             - name: EMPLOYEE_SERVICE_BASE_URL
-              value: http://employee-service.it-employee.svc.cluster.local
+              value: https://employee-service.it-employee.svc.cluster.local
