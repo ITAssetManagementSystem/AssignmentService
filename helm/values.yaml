@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: devacr301225.azurecr.io/assignment-service
-  tag: d32515e05a2ff883826f3d7ea1b2fb7d711c9b82
+  tag: 6b350a1618a256fef52fc1a9facac9245e1b3328
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
