@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/helm/values.yaml
 
-    - repoURL: https://github.com/ITAssetManagementSystem/AssetService.git
+    - repoURL: https://github.com/ITAssetManagementSystem/AssignmentService.git
       targetRevision: main
       ref: values
 
